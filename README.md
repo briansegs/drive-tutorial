@@ -4,9 +4,10 @@
 
 - [x] Add base file
 - [x] Set up database and data model
-- [ ] Move folder open state to URL
+- [x] Move folder open state to URL
 - [ ] Add auth
 - [ ] Add file uploading
+- [ ] Add analytics
 
 ## Note from 2-5-2025
 
@@ -16,3 +17,9 @@ Just finished up connecting database, next steps:
 - [x] Manually insert examples
 - [x] Render them in the UI
 - [x] Push and make sure it all works
+
+## Note from 2-6-2025
+
+- [ ] Change folders to link components, remove all client state
+- [ ] Clean up the database and data fetching patterns
+- [ ] Real homepage
