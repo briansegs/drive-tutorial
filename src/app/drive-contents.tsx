@@ -6,12 +6,16 @@ import { FileRow, FolderRow } from "./file-row";
 import type { files_table, folders_table } from "~/server/db/schema";
 import Link from "next/link";
 import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { UploadButton } from "~/components/uploadthing";
+import { useRouter } from "next/navigation";
 
 export default function DriveContents(props: {
   files: (typeof files_table.$inferSelect)[];
   folders: (typeof folders_table.$inferSelect)[];
   parents: (typeof folders_table.$inferSelect)[];
 }) {
+  const navigate = useRouter();
+
   return (
     <div className="min-h-screen bg-gray-900 p-8 text-gray-100">
       <div className="mx-auto max-w-6xl">
@@ -65,6 +69,18 @@ export default function DriveContents(props: {
               <FileRow key={file.id} file={file} />
             ))}
           </ul>
+        </div>
+        <div className="flex pt-4">
+          <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={() => {
+              navigate.refresh();
+            }}
+            onUploadError={(error: Error) => {
+              // Do something with the error.
+              alert(`ERROR! ${error.message}`);
+            }}
+          />
         </div>
       </div>
     </div>
