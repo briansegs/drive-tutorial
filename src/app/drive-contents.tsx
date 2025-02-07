@@ -1,6 +1,6 @@
 "use client";
 
-import { Upload, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Button } from "~/components/ui/button";
 import { FileRow, FolderRow } from "./file-row";
 import type { files_table, folders_table } from "~/server/db/schema";
@@ -13,6 +13,8 @@ export default function DriveContents(props: {
   files: (typeof files_table.$inferSelect)[];
   folders: (typeof folders_table.$inferSelect)[];
   parents: (typeof folders_table.$inferSelect)[];
+
+  currentFolderId: number;
 }) {
   const navigate = useRouter();
 
@@ -79,6 +81,9 @@ export default function DriveContents(props: {
             onUploadError={(error: Error) => {
               // Do something with the error.
               alert(`ERROR! ${error.message}`);
+            }}
+            input={{
+              folderId: props.currentFolderId,
             }}
           />
         </div>

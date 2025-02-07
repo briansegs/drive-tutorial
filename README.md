@@ -26,7 +26,8 @@ Just finished up connecting database, next steps:
 
 ## Note from 2-6-2025
 
-- [ ] Upload files to the right folder
+- [x] Add "owership" to files and folders
+- [x] Upload files to the right folder
 - [ ] Delete files button
 - [ ] Allow files that aren't images to be uploaded
 - [ ] Real homepage
