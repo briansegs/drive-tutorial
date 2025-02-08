@@ -74,7 +74,7 @@ export default function DriveContents(props: {
         </div>
         <div className="flex pt-4">
           <UploadButton
-            endpoint="imageUploader"
+            endpoint="driveUploader"
             onClientUploadComplete={() => {
               navigate.refresh();
             }}
