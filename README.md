@@ -8,6 +8,8 @@
 - [x] Add auth
 - [x] Add file uploading
 - [ ] Add analytics
+- [ ] Real homepage + onboarding
+- [ ] Delete files button
 
 ## Note from 2-5-2025
 
