@@ -1,11 +1,11 @@
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
-import { mockFiles, mockFolders } from "~/lib/mock-data";
+import { mockFolders } from "~/lib/mock-data";
 import { db } from "~/server/db";
-import { files, files_table, folders, folders_table } from "~/server/db/schema";
+import { folders_table } from "~/server/db/schema";
 
 export default async function SandboxPage() {
-  const user = await auth();
+  const user = auth();
   if (!user.userId) {
     throw new Error("User not found");
   }
@@ -24,7 +24,7 @@ export default async function SandboxPage() {
         action={async () => {
           "use server";
 
-          const user = await auth();
+          const user = auth();
 
           if (!user.userId) {
             throw new Error("User not found");

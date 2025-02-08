@@ -27,7 +27,7 @@ export const ourFileRouter = {
     // Set permissions and file types for this FileRoute
     .middleware(async ({ input }) => {
       // This code runs on your server before upload
-      const user = await auth();
+      const user = auth();
 
       // If you throw, the user will not be able to upload
       // eslint-disable-next-line @typescript-eslint/only-throw-error
