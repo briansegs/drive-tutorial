@@ -10,6 +10,7 @@ import { cookies } from "next/headers";
 const utApi = new UTApi();
 
 export async function deleteFile(fileId: number) {
+  // eslint-disable-next-line @typescript-eslint/await-thenable
   const session = await auth();
   if (!session.userId) {
     return { error: "Unauthorized" };
