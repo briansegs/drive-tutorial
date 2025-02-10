@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/await-thenable */
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
-import { QUERIES } from "~/server/db/queries";
+import { Button } from "~/components/ui/button";
+import { MUTATIONS, QUERIES } from "~/server/db/queries";
 
 export default async function DrivePage() {
-  // eslint-disable-next-line @typescript-eslint/await-thenable
   const session = await auth();
 
   if (!session.userId) {
@@ -13,7 +14,24 @@ export default async function DrivePage() {
   const rootFolder = await QUERIES.getRootFolderForUser(session.userId);
 
   if (!rootFolder) {
-    return redirect("/drive/create-root-folder");
+    return (
+      <form
+        action={async () => {
+          "user server";
+          const session = await auth();
+
+          if (!session.userId) {
+            return redirect("/sign-in");
+          }
+
+          const rootFolderId = await MUTATIONS.onboardUser(session.userId);
+
+          return redirect(`/f/${rootFolderId}`);
+        }}
+      >
+        <Button>Create New Drive</Button>
+      </form>
+    );
   }
 
   return redirect(`/f/${rootFolder.id}`);
